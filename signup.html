@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>創建帳號 - 寬寬GPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>創建帳號</h1>
+        <form id="signupForm">
+            <input type="text" id="newUsername" placeholder="帳號" required><br>
+            <input type="password" id="newPassword" placeholder="密碼" required><br>
+            <button type="submit">創建帳號</button>
+        </form>
+        <a href="login.html">已經有帳號？登入</a>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").onsubmit = function(e){
+            e.preventDefault();
+            let username = document.getElementById("newUsername").value;
+            let password = document.getElementById("newPassword").value;
+            if(localStorage.getItem(username)){
+                alert("帳號已存在");
+            } else {
+                localStorage.setItem(username, password);
+                alert("帳號創建成功，請登入");
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+</body>
+</html>

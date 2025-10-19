@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>登入 - 寬寬GPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>登入</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="帳號" required><br>
+            <input type="password" id="password" placeholder="密碼" required><br>
+            <button type="submit">登入</button>
+        </form>
+        <a href="signup.html">還沒有帳號？創建帳號</a>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").onsubmit = function(e){
+            e.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let storedPass = localStorage.getItem(username);
+            if(storedPass && storedPass === password){
+                alert("登入成功！");
+                // 登入成功後跳轉到你的 GPT 網頁
+               window.location.href = "chat.html";
+            } else {
+                alert("帳號或密碼錯誤");
+            }
+        }
+    </script>
+</body>
+</html>
